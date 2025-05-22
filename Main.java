@@ -57,6 +57,26 @@ public class Main {
 
     //Complejidad O(n^2)
 
+    public static Integer sumMatrix(ArrayList<ArrayList<Integer>> matrix) {
+        Integer sum = 0;
+        for (int i = 0; i < matrix.size(); i++) {
+            for (int j = 0; j < matrix.get(i).size(); j++) {
+                sum += matrix.get(i).get(j);
+            }
+        }
+        return sum;
+    }
+
+    // Complejidad O(log n)
+
+
+
+
+
+
+
+
+
 
 
 
