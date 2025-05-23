@@ -27,6 +27,26 @@ public class SelectionSort {
         System.out.println("Insertion sorted gpt");
         System.out.println(insertionSorted);
 
+        ArrayList<Integer> sortSwap = (ArrayList<Integer>) sortSwap(numbers);
+        System.out.println("Insertion swaped gpt");
+        System.out.println(sortSwap);
+
+        ArrayList<Integer> bubbleSort = (ArrayList<Integer>) bubbleSort(numbers);
+        System.out.println("bubbleSort swaped");
+        System.out.println(bubbleSort);
+
+
+        ArrayList<Integer> mergeRecursion = (ArrayList<Integer>) mergeRecursion(numbers);
+        System.out.println("mergeRecursion swaped");
+        System.out.println(mergeRecursion);
+
+
+
+
+
+
+
+
 
 
     }
@@ -105,11 +125,105 @@ public class SelectionSort {
         return sorted;
     }
 
+    public static List<Integer> sortSwap(ArrayList<Integer> nums) {
+        for(int i = 0; i < nums.size(); i++){
+            int current = nums.get(i);
+            for(int j = i - 1; j >= 0 && current < nums.get(j); j--){
+                nums.set(j + 1, nums.get(j));
+                nums.set(j, current);
+            }
+        }
+        return nums;
+    }
+
+
+    public static List<Integer> bubbleSort(ArrayList<Integer> nums){
+        boolean swaps = true;
+        while(swaps){
+            swaps = false;
+            for(int i = 1; i < nums.size(); i++){
+                if(nums.get(i) < nums.get(i-1)){
+                    nums.set(i-1,nums.get(i) );
+                    nums.set(i,nums.get(i-1) );
+                    swaps = true;
+                }
+            }
+        }
+        return nums;
+    }
 
 
 
 
+    public static void mergeSort(ArrayList<Integer> nums1,ArrayList<Integer> nums2) {
+        if(nums1.isEmpty() || nums2.isEmpty() ){
+            throw new IllegalArgumentException("Not allowed empty list");
+        }
 
+
+
+
+    }
+
+    public static void mergeSortUnited(ArrayList<Integer> nums1,ArrayList<Integer> nums2) {
+        if(nums1.isEmpty() || nums2.isEmpty() ){
+            throw new IllegalArgumentException("Not allowed empty list");
+        }
+
+
+
+
+    }
+
+
+    public static  List<Integer> mergeRecursion(ArrayList<Integer> list){
+
+        if(list.size() < 2){
+            return list;
+        }
+
+        int mid = list.size() / 2;
+        List<Integer> left = new ArrayList<>(list.subList(0, mid));
+        List<Integer> right = new ArrayList<>(list.subList(mid, list.size()));
+
+        left = mergeRecursion((ArrayList<Integer>) left);
+        right = mergeRecursion((ArrayList<Integer>) right);
+
+        return merge(left, right);
+    }
+
+    private static List<Integer> merge(List<Integer> left, List<Integer> right) {
+        List<Integer> merged = new ArrayList<>();
+        int i = 0, j = 0;
+
+        while (i < left.size() && j < right.size()) {
+            if (left.get(i) < right.get(j)) {
+                merged.add(left.get(i++));
+            } else {
+                merged.add(right.get(j++));
+            }
+        }
+
+        // Agregar los elementos restantes de left (si los hay)
+        while (i < left.size()) {
+            merged.add(left.get(i++));
+        }
+
+        // Agregar los elementos restantes de right (si los hay)
+        while (j < right.size()) {
+            merged.add(right.get(j++));
+        }
+
+        return merged;
+    }
+
+    public static <T> List<T> unirListas(List<T> lista1, List<T> lista2) {
+        List<T> resultado = new ArrayList<>(lista1);
+        resultado.addAll(lista2);
+        return resultado;
+    }
 
 
 }
+
+
