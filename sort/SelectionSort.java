@@ -9,7 +9,7 @@ public class SelectionSort {
     public static void main(String[] args) {
 
         System.out.println("Selection sort");
-        ArrayList<Integer> numbers = new ArrayList<>(List.of(3, 1, 4, 2));
+        ArrayList<Integer> numbers = new ArrayList<>(List.of(3, 1, 4, 2,5,6,9,8,7,4,5,6,3,5));
 
         // Versión que modifica la original
         selectionSort(numbers);
@@ -143,8 +143,9 @@ public class SelectionSort {
             swaps = false;
             for(int i = 1; i < nums.size(); i++){
                 if(nums.get(i) < nums.get(i-1)){
-                    nums.set(i-1,nums.get(i) );
-                    nums.set(i,nums.get(i-1) );
+                    int temp = nums.get(i-1);
+                    nums.set(i-1, nums.get(i));
+                    nums.set(i, temp);
                     swaps = true;
                 }
             }

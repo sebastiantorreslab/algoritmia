@@ -1,4 +1,4 @@
-package excercises;
+package arrays;
 
 import java.util.ArrayList;
 import java.util.HashSet;
